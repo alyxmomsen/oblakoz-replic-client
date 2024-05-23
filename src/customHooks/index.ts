@@ -49,15 +49,7 @@ async function getArticles(url: string) {
   try {
     console.log({ url });
 
-    const response = await axios.get<Articles>(url, {
-      headers: {
-        authority: "oblakoz.ru",
-        path: "/_next/data/esjhMY5ByOOl77eVcZQmS/articles.json",
-        scheme: "https",
-        Accept: "*/*",
-        "Accept-Encoding": "gzip, deflate, br",
-      },
-    });
+    const response = await axios.get<Articles>(url);
 
     const data = response.data;
 
