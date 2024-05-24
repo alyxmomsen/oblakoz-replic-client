@@ -6,15 +6,15 @@ interface RubricInterface {
   title: string;
 }
 
-const ArticlesFilter = ({ rubrics }: { rubrics: RubricInterface[] }) => {
+const ArticlesFilter = ({ rubrics }: { rubrics: (RubricInterface & {choisen:boolean})[] }) => {
   return (
     <div className="regular-wrapper articles-filter-wrapper">
-      {rubrics.map((elem) => (
+      {rubrics.map((the_rubric) => (
         <ArticleFilterUnit
-          title={elem.title}
-          id={elem.id}
-          key={elem.id}
-          isOn={true}
+          title={the_rubric.title}
+          id={the_rubric.id}
+          key={the_rubric.id}
+          isOn={the_rubric.choisen}
         />
       ))}
     </div>
