@@ -1,3 +1,23 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:link {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 .App {
   text-align: center;
 }
@@ -20,6 +40,9 @@
 /* ------------------- */
 
 .regular-wrapper {
+  /* padding: 9px;
+  margin: 0 9px 9px 9px; */
+  border: 1px solid salmon;
   /* border: 1px solid saddlebrown; */
 }
 
@@ -74,8 +97,6 @@ header img {
   background-color: rosybrown;
 }
 
-
-
 /* --------------------------- */
 
 .articles-filter-wrapper {
@@ -113,9 +134,9 @@ header img {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.43;
-  color: #68686D;
+  color: #68686d;
   border-radius: 6px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -123,6 +144,5 @@ header img {
   -webkit-tap-highlight-color: transparent;
   white-space: nowrap;
 }
-
 
 /* -------------------------------- */

@@ -11,6 +11,8 @@ import Home from "./components/home";
 import RootBloodyRoot from "./components/root";
 import NavBar from "./components/nav-bar";
 import About from "./components/about";
+import PageArticles from "./pages/articles";
+import ArticlesFilter from "./components/articles-filter-unit";
 
 export interface MainContext {
   model: MainState;
@@ -21,6 +23,7 @@ export interface MainContext {
 
 export interface MainState {
   isModalOpen: boolean;
+  articlesFilter: string;
 }
 
 export type MainContextDispathType = React.Dispatch<{
@@ -29,11 +32,11 @@ export type MainContextDispathType = React.Dispatch<{
 }>;
 
 export const main_context = createContext<MainContext>({
-  model: { isModalOpen: false },
+  model: { isModalOpen: false, articlesFilter: "" },
   controller: { mainDispatch: null },
 });
 
-export type MainReducerActionType = "modal-open" | "foo-bar";
+export type MainReducerActionType = "modal-open" | "articles-filter";
 
 function mainReducer(
   state: MainState,
@@ -42,16 +45,18 @@ function mainReducer(
   switch (action.type) {
     case "modal-open":
       return { ...state, ...action.payload };
-    case "foo-bar":
-      return { ...state };
+    case "articles-filter":
+      return { ...state, ...action.payload };
     default:
       return { ...state };
   }
 }
 
 function App() {
-  
-  const [state, dispatch] = useReducer(mainReducer, { isModalOpen: false });
+  const [state, dispatch] = useReducer(mainReducer, {
+    isModalOpen: false,
+    articlesFilter: "",
+  });
 
   return (
     <main_context.Provider
@@ -65,7 +70,7 @@ function App() {
           <Routes>
             <Route path={"/"} element={<RootBloodyRoot />}>
               <Route path="/home" element={<Home />}></Route>
-              <Route path="/articles" element={<Articles />}></Route>
+              <Route path="/articles" element={<PageArticles />}></Route>
               <Route
                 path="/auth"
                 element={

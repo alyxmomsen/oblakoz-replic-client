@@ -7,11 +7,13 @@ const Header = () => {
 
   return (
     <header className="regular-wrapper">
-        <Link to={'/'}><img
-        alt="logo"
-        srcSet="https://oblakoz.ru/_next/static/media/logo_with_title_without_padding.af4c105a.svg"
-      /></Link>
-      
+      <Link to={"/"}>
+        <img
+          alt="logo"
+          srcSet="https://oblakoz.ru/_next/static/media/logo_with_title_without_padding.af4c105a.svg"
+        />
+      </Link>
+
       <button
         onClick={() => {
           if (mnctx.controller.mainDispatch) {

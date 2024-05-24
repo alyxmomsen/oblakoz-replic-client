@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const CategoriesLinksWrapper = () => {
-  return (
-    <div className='main-wrapper'>CategoriesLinksWrapper</div>
-  )
-}
+  return <div className="main-wrapper">CategoriesLinksWrapper</div>;
+};
 
-export default CategoriesLinksWrapper
+export default CategoriesLinksWrapper;
