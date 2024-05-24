@@ -43,11 +43,23 @@ const useArticles = (url: string) => {
     axios
       .get<string>(url)
       .then((response) => {
+
+        // console.log({response});
+
+        // const obj = response.data ;
         const obj = JSON.parse(response.data);
+
+        // console.log({obj});
 
         const articles_comm = obj as Articles_common;
 
         const { articles, rubrics } = articles_comm.pageProps;
+
+        const arr = Array.from(articles) ;
+
+        // console.log(arr);
+
+        console.log({articles , rubrics});
 
         setArticles([...articles]);
         setRubrics([...rubrics]);
