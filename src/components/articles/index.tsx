@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import NavBar from "../nav-bar";
 
 import axios, { AxiosError } from "axios";
@@ -35,10 +35,65 @@ interface Articles_common {
 }
 
 const Articles = ({ articles }: { articles: ArticleInterface[] }) => {
-  useEffect(() => {}, []);
+
+  const [cols , setCols] = useState(1);
+
+  const handler = () => {
+
+    const { innerWidth , innerHeight } = window ;
+
+
+    if(cols < 2 && innerWidth > 600) {
+
+      // console.log('setting 2');
+      
+      setCols(2);
+
+    }
+    else {
+
+      if(cols > 1 && innerWidth < 600) {
+
+        // console.log('setting 1');
+
+        setCols(1);
+
+      }
+
+    }
+
+    // console.log(`${innerWidth} ${innerHeight}`) ;
+
+  }
+
+  
+
+  useLayoutEffect(() => {
+    
+    window.addEventListener('resize' , handler , this);
+    
+    console.log('mount');
+    
+    return () => {
+
+      console.log('remount');
+      window.removeEventListener('resize' , handler , this)
+    };
+  }, [cols]);
+
+  useLayoutEffect(() => {
+    // console.log(window.screen.width);
+
+    const width = window.screen.availWidth ;
+
+    console.log(width);
+  } , []);
 
   return (
     <div className="articles-container">
+      {
+        
+      }
       {articles.length && articles.map((elem) => <Article data={elem} />)}
     </div>
   );

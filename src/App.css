@@ -192,6 +192,7 @@ header img {
 
 .article-filter-unit.choisen {
   background-color: #8abdff;
+  color: whitesmoke;
 }
 
 /* -------------------------------- */
@@ -204,8 +205,15 @@ header img {
   flex-grow: 0;
   max-width: 100%;
   display: flex;
+  display: grid;
+  grid-template-columns: repeat(8 , 1fr);
   flex-direction: column;
   gap: 16px;
+}
+
+.articles-container .article-preview {
+  /* background-color: #282c34; */
+  grid-column: span 8;
 }
 
 /* -------------------------------- */
@@ -256,4 +264,21 @@ header img {
   color: #38414D;
   margin-top: 12px;
   text-align: left;
+}
+
+
+@media (min-width: 600px) {
+
+  .articles-container .article-preview {
+    grid-column: span 4;
+  }
+
+}
+
+@media (min-width: 900px) {
+
+  .articles-container .article-preview {
+    grid-column: span 2;
+  }
+
 }
