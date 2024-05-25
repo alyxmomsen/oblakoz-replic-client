@@ -92,9 +92,9 @@ const Articles = ({ articles }: { articles: ArticleInterface[] }) => {
   return (
     <div className="articles-container">
       {
-        
+
       }
-      {articles.length && articles.map((elem) => <Article data={elem} />)}
+      {articles.length ? articles.map((elem) => <Article data={elem} />) : <div>loading...</div>}
     </div>
   );
 };

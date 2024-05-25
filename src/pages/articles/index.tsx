@@ -7,13 +7,19 @@ import useArticles from "../../customHooks/useArticles";
 const PageArticles = () => {
   const mnctx = useContext(main_context);
 
-  const [url, setUrl] = useState("http://localhost:3002/api/articles");
+
+  const vercel = 'https://oblakoz-replic-server.vercel.app/api/articles' ;
+  const local = 'http://localhost:3002/api/articles'
+
+  const theurl = true ? vercel : local
+
+  const [url, setUrl] = useState(theurl);
 
   const { articles, rubrics } = useArticles(url);
 
   useEffect(() => {
     setUrl(
-      "http://localhost:3002/api/articles" +
+      theurl +
         (mnctx.model.articlesFilter.length
           ? "?articles-filter=" + mnctx.model.articlesFilter
           : ""),
