@@ -38,8 +38,7 @@ const Articles = ({ articles }: { articles: ArticleInterface[] }) => {
   useEffect(() => {}, []);
 
   return (
-    <div className="main-page-container">
-      <h1>Articles</h1>
+    <div className="articles-container">
       {articles.length && articles.map((elem) => <Article data={elem} />)}
     </div>
   );
@@ -47,23 +46,33 @@ const Articles = ({ articles }: { articles: ArticleInterface[] }) => {
 
 export default Articles;
 
-// import React from 'react'
-
 export const Article = ({ data }: { data: ArticleInterface }) => {
   return (
     <a
       href={`https://oblakoz.ru/article/${data.href}`}
-      className="regular-wrapper"
+      className="regular-wrapper article-preview"
     >
-      <div>
-        <img
-          width={"100%"}
-          src={`https://oblakoz.ru/api/images/pageBanner/${data.id}/full_1`}
-          alt=""
-        />
-      </div>
-      <div>
-        <h3>{data.title}</h3>
+      <div className="inner-wrapper">
+        <div>
+          <img
+            width={"100%"}
+            src={`https://oblakoz.ru/api/images/pageBanner/${data.id}/full_1`}
+            alt=""
+          />
+        </div>
+        <div className={"article-description-wrapper"}>
+          <div className={"article-description-meta"}>
+            <span className="article-description-meta-date">Статьи • {`${new Date(data.date).getDate()}.${(() => {
+              const month = new Date(data.date).getMonth();
+              return month + 1 < 10 ? `0${month + 1}` : month + 1;
+            })()}`}</span>
+            <div className="article-description-meta-views">
+              <span></span>
+              <span className={`article-description-meta-views-value`}>{data.views}</span>
+            </div>
+          </div>
+          <div className={"article-description-title"}>{data.title}</div>
+        </div>
       </div>
     </a>
   );

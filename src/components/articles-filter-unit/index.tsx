@@ -6,7 +6,11 @@ interface RubricInterface {
   title: string;
 }
 
-const ArticlesFilter = ({ rubrics }: { rubrics: (RubricInterface & {choisen:boolean})[] }) => {
+const ArticlesFilter = ({
+  rubrics,
+}: {
+  rubrics: (RubricInterface & { choisen: boolean })[];
+}) => {
   return (
     <div className="regular-wrapper articles-filter-wrapper">
       {rubrics.map((the_rubric) => (

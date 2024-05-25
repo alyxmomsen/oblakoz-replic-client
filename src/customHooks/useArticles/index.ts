@@ -37,13 +37,11 @@ const useArticles = (url: string) => {
   const [rubrics, setRubrics] = useState<RubricInterface[]>([]);
 
   useEffect(() => {
+    console.log({ url });
 
-    console.log({url});
-    
     axios
       .get<string>(url)
       .then((response) => {
-
         // console.log({response});
 
         // const obj = response.data ;
@@ -55,11 +53,11 @@ const useArticles = (url: string) => {
 
         const { articles, rubrics } = articles_comm.pageProps;
 
-        const arr = Array.from(articles) ;
+        const arr = Array.from(articles);
 
         // console.log(arr);
 
-        console.log({articles , rubrics});
+        console.log({ articles, rubrics });
 
         setArticles([...articles]);
         setRubrics([...rubrics]);

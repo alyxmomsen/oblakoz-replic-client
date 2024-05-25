@@ -12,25 +12,30 @@ const PageArticles = () => {
   const { articles, rubrics } = useArticles(url);
 
   useEffect(() => {
+    setUrl(
+      "http://localhost:3002/api/articles" +
+        (mnctx.model.articlesFilter.length
+          ? "?articles-filter=" + mnctx.model.articlesFilter
+          : ""),
+    );
+  }, [mnctx.model.articlesFilter]);
 
-    setUrl('http://localhost:3002/api/articles' + ((mnctx.model.articlesFilter.length) ? ('?articles-filter=' + mnctx.model.articlesFilter) : ''));
+  const x: { x: number } & { y: number } = { x: 0, y: 9 };
 
-  } , [mnctx.model.articlesFilter]);
+  const rubricsFilterArr = util_articles_filter_string_as_array(
+    mnctx.model.articlesFilter,
+  );
 
+  const rubricsExtended = rubricsFilterArr.length
+    ? rubrics.map((rubric) => ({
+        ...rubric,
+        choisen: rubricsFilterArr.find((elem) => rubric.id === elem)
+          ? true
+          : false,
+      }))
+    : rubrics.map((rubric) => ({ ...rubric, choisen: true }));
 
-  const x:{x:number} & {y:number} = {x:0 , y:9} ;
-
-  const rubricsFilterArr = util_articles_filter_string_as_array(mnctx.model.articlesFilter);
-
-  
-
-  
-
-  const rubricsExtended = rubricsFilterArr.length 
-    ? rubrics.map(rubric => ({...rubric , choisen:rubricsFilterArr.find(elem => rubric.id === elem) ? true : false}))
-    : rubrics.map(rubric => ({...rubric , choisen:true}));
-
-  console.log({newar: rubricsExtended}) ;
+  console.log({ newar: rubricsExtended });
 
   return (
     <div>
@@ -42,23 +47,14 @@ const PageArticles = () => {
 
 export default PageArticles;
 
-
-function util_articles_filter_string_as_array (str:string) {
-
-    if(str.length) {
-
-        if(str.match(/__/i)) {
-
-            return str.split('__');
-        }
-        else {
-            return [str] ;
-        }
-
+function util_articles_filter_string_as_array(str: string) {
+  if (str.length) {
+    if (str.match(/__/i)) {
+      return str.split("__");
+    } else {
+      return [str];
     }
-    else {
-        
-        return [] 
-    }
-
+  } else {
+    return [];
+  }
 }

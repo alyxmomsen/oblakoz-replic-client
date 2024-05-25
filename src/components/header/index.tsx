@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { main_context } from "../../App";
 import { Link } from "react-router-dom";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Header = () => {
   const mnctx = useContext(main_context);
@@ -15,6 +16,7 @@ const Header = () => {
       </Link>
 
       <button
+        className={"main-menu-hamburger"}
         onClick={() => {
           if (mnctx.controller.mainDispatch) {
             mnctx.controller.mainDispatch({
@@ -24,7 +26,7 @@ const Header = () => {
           }
         }}
       >
-        click me
+        <RxHamburgerMenu />
       </button>
     </header>
   );
