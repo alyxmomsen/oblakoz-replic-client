@@ -1,17 +1,14 @@
-import React, { useContext, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
-import NavBar from "../nav-bar";
+import { useContext, useEffect } from "react";
+import { Outlet } from "react-router-dom";
+
 import Header from "../header";
 import ModalWindowMenu from "../modal-window-menu";
 import { main_context } from "../../App";
-import CategoriesLinksWrapper from "../categories-links-module";
 
 const RootBloodyRoot = () => {
   const mnctx = useContext(main_context);
 
-  useEffect(() => {
-    // console.log('use effect' , mnctx.model.articlesFilter);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="main-wrapper">

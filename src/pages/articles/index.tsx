@@ -4,22 +4,23 @@ import Articles from "../../components/articles";
 import { main_context } from "../../App";
 import useArticles from "../../customHooks/useArticles";
 
+const vercel_hosted_server_base_url =
+  "https://oblakoz-replic-server.vercel.app/api/articles";
+const local_server_base_url = "http://localhost:3002/api/articles";
+
+const server_base_url = true
+  ? vercel_hosted_server_base_url
+  : local_server_base_url;
+
 const PageArticles = () => {
-  
   const mnctx = useContext(main_context);
-
-  const vercel_hosted_server_base_url = 'https://oblakoz-replic-server.vercel.app/api/articles' ;
-  const local_server_base_url = 'http://localhost:3002/api/articles'
-
-  const server_base_url = true ? vercel_hosted_server_base_url : local_server_base_url
 
   const [url, setUrl] = useState(server_base_url);
 
   const { articles, rubrics } = useArticles(url);
 
   useEffect(() => {
-
-    console.log('effect');
+    console.log("effect");
 
     setUrl(
       server_base_url +
@@ -44,10 +45,8 @@ const PageArticles = () => {
       }))
     : rubrics.map((rubric) => ({ ...rubric, choisen: true }));
 
-  console.log({ newar: rubricsExtended });
-
   return (
-    <div style={{display:'flex' , flexDirection:'column' , gap:'9px'}}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
       <ArticlesFilter key={0} rubrics={rubricsExtended} />
       <Articles articles={articles} key={1} />
     </div>

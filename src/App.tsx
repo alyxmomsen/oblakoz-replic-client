@@ -1,42 +1,21 @@
-import React, { createContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
-import { Route, Routes, Link, Outlet, BrowserRouter } from "react-router-dom";
+import { Route, Routes, Outlet, BrowserRouter } from "react-router-dom";
 
 import "./App.css";
 import ProtectedRoute from "./routes/protected";
 import Login from "./components/login";
 import Account from "./components/account";
-import Articles from "./components/articles";
 import Home from "./components/home";
 import RootBloodyRoot from "./components/root";
-import NavBar from "./components/nav-bar";
 import About from "./components/about";
 import PageArticles from "./pages/articles";
-import ArticlesFilter from "./components/articles-filter-unit";
-
-export interface MainContext {
-  model: MainState;
-  controller: {
-    mainDispatch: MainContextDispathType | null;
-  };
-}
-
-export interface MainState {
-  isModalOpen: boolean;
-  articlesFilter: string;
-}
-
-export type MainContextDispathType = React.Dispatch<{
-  type: MainReducerActionType;
-  payload: Partial<MainState>;
-}>;
+import { MainContext, MainReducerActionType, MainState } from "./types";
 
 export const main_context = createContext<MainContext>({
   model: { isModalOpen: false, articlesFilter: "" },
   controller: { mainDispatch: null },
 });
-
-export type MainReducerActionType = "modal-open" | "articles-filter";
 
 function mainReducer(
   state: MainState,

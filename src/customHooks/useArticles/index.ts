@@ -1,36 +1,10 @@
 import axios, { AxiosError } from "axios";
-import React, { useEffect, useState } from "react";
-
-interface ArticleInterface {
-  id: string;
-  title: string;
-  views: number;
-  href: string;
-  date: string;
-  coverSrc: string;
-  rubricId: string;
-}
-
-interface RubricInterface {
-  id: string;
-  title: string;
-}
-
-interface Articles_common {
-  pageProps: {
-    metaData: {
-      title: string;
-      keywords: string;
-      description: string;
-    };
-    articles: ArticleInterface[];
-    totalPages: number;
-    activePage: number;
-    rubrics: RubricInterface[];
-    activeRubrics: string[];
-  };
-  __N_SSP: boolean;
-}
+import { useEffect, useState } from "react";
+import {
+  ArticleInterface,
+  Articles_common,
+  RubricInterface,
+} from "../../types";
 
 const useArticles = (url: string) => {
   const [articles, setArticles] = useState<ArticleInterface[]>([]);
@@ -42,20 +16,13 @@ const useArticles = (url: string) => {
     axios
       .get<string>(url)
       .then((response) => {
-        // console.log({response});
-
-        // const obj = response.data ;
         const obj = JSON.parse(response.data);
-
-        // console.log({obj});
 
         const articles_comm = obj as Articles_common;
 
         const { articles, rubrics } = articles_comm.pageProps;
 
         const arr = Array.from(articles);
-
-        // console.log(arr);
 
         console.log({ articles, rubrics });
 

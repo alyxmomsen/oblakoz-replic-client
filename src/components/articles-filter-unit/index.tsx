@@ -1,10 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { main_context, MainContext } from "../../App";
-
-interface RubricInterface {
-  id: string;
-  title: string;
-}
+import { main_context } from "../../App";
+import { MainContext, RubricInterface } from "../../types";
 
 const ArticlesFilter = ({
   rubrics,
