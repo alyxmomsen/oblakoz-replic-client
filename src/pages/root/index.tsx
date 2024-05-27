@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
-import Header from "../header";
-import ModalWindowMenu from "../modal-window-menu";
+import Header from "../../components/header";
+import ModalWindowMenu from "../../components/modal-window-menu";
 import { main_context } from "../../App";
 
-const RootBloodyRoot = () => {
+const RooootBloodyRoooot = () => {
   const mnctx = useContext(main_context);
 
   useEffect(() => {}, []);
@@ -20,4 +20,4 @@ const RootBloodyRoot = () => {
   );
 };
 
-export default RootBloodyRoot;
+export default RooootBloodyRoooot;

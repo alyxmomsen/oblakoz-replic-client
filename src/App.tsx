@@ -5,10 +5,10 @@ import { Route, Routes, Outlet, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import ProtectedRoute from "./routes/protected";
 import Login from "./components/login";
-import Account from "./components/account";
-import Home from "./components/home";
-import RootBloodyRoot from "./components/root";
-import About from "./components/about";
+import Account from "./pages/account";
+import Home from "./pages/home";
+import RooootBloodyRoooot from "./pages/root";
+import About from "./pages/about";
 import PageArticles from "./pages/articles";
 import { MainContext, MainReducerActionType, MainState } from "./types";
 
@@ -47,7 +47,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path={"/"} element={<RootBloodyRoot />}>
+            <Route path={"/"} element={<RooootBloodyRoooot />}>
               <Route path="/home" element={<Home />}></Route>
               <Route path="/articles" element={<PageArticles />}></Route>
               <Route
