@@ -8,12 +8,18 @@ const Header = () => {
 
   return (
     <header className="regular-wrapper">
-      <Link to={"/"}>
+      <a href="https://oblakoz.ru/">
+      <img
+          alt="logo"
+          srcSet="https://oblakoz.ru/_next/static/media/logo_with_title_without_padding.af4c105a.svg"
+        />
+      </a>
+      {/* <Link to={"/"}>
         <img
           alt="logo"
           srcSet="https://oblakoz.ru/_next/static/media/logo_with_title_without_padding.af4c105a.svg"
         />
-      </Link>
+      </Link> */}
 
       <button
         className={"main-menu-hamburger"}

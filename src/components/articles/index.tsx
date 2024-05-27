@@ -1,5 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import NavBar from "../nav-bar";
+import { FaEye } from "react-icons/fa";
+
 
 import axios, { AxiosError } from "axios";
 import { response } from "express";
@@ -122,7 +124,7 @@ export const Article = ({ data }: { data: ArticleInterface }) => {
               return month + 1 < 10 ? `0${month + 1}` : month + 1;
             })()}`}</span>
             <div className="article-description-meta-views">
-              <span></span>
+              <span><FaEye color="#8abdff" /></span>
               <span className={`article-description-meta-views-value`}>{data.views}</span>
             </div>
           </div>
